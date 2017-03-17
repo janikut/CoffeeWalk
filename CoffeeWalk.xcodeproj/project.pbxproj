@@ -1,0 +1,308 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		856D905E1E7BCFFD00D99929 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D905D1E7BCFFD00D99929 /* AppDelegate.swift */; };
+		856D90651E7BCFFD00D99929 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 856D90641E7BCFFD00D99929 /* Assets.xcassets */; };
+		856D90681E7BCFFD00D99929 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 856D90661E7BCFFD00D99929 /* LaunchScreen.storyboard */; };
+		856D90741E7BD09700D99929 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D906F1E7BD09700D99929 /* MapViewController.swift */; };
+		856D90751E7BD09700D99929 /* VenueRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D90701E7BD09700D99929 /* VenueRequestManager.swift */; };
+		856D90761E7BD09700D99929 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D90711E7BD09700D99929 /* Theme.swift */; };
+		856D90771E7BD09700D99929 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D90721E7BD09700D99929 /* Venue.swift */; };
+		856D90781E7BD09700D99929 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D90731E7BD09700D99929 /* Utils.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		856D905A1E7BCFFD00D99929 /* CoffeeWalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeWalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		856D905D1E7BCFFD00D99929 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		856D90641E7BCFFD00D99929 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		856D90671E7BCFFD00D99929 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		856D90691E7BCFFD00D99929 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		856D906F1E7BD09700D99929 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		856D90701E7BD09700D99929 /* VenueRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueRequestManager.swift; sourceTree = "<group>"; };
+		856D90711E7BD09700D99929 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		856D90721E7BD09700D99929 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
+		856D90731E7BD09700D99929 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		856D90571E7BCFFD00D99929 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		856D90511E7BCFFD00D99929 = {
+			isa = PBXGroup;
+			children = (
+				856D905C1E7BCFFD00D99929 /* CoffeeWalk */,
+				856D905B1E7BCFFD00D99929 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		856D905B1E7BCFFD00D99929 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				856D905A1E7BCFFD00D99929 /* CoffeeWalk.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		856D905C1E7BCFFD00D99929 /* CoffeeWalk */ = {
+			isa = PBXGroup;
+			children = (
+				856D906F1E7BD09700D99929 /* MapViewController.swift */,
+				856D90701E7BD09700D99929 /* VenueRequestManager.swift */,
+				856D90711E7BD09700D99929 /* Theme.swift */,
+				856D90721E7BD09700D99929 /* Venue.swift */,
+				856D90731E7BD09700D99929 /* Utils.swift */,
+				856D905D1E7BCFFD00D99929 /* AppDelegate.swift */,
+				856D90641E7BCFFD00D99929 /* Assets.xcassets */,
+				856D90661E7BCFFD00D99929 /* LaunchScreen.storyboard */,
+				856D90691E7BCFFD00D99929 /* Info.plist */,
+			);
+			path = CoffeeWalk;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		856D90591E7BCFFD00D99929 /* CoffeeWalk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 856D906C1E7BCFFD00D99929 /* Build configuration list for PBXNativeTarget "CoffeeWalk" */;
+			buildPhases = (
+				856D90561E7BCFFD00D99929 /* Sources */,
+				856D90571E7BCFFD00D99929 /* Frameworks */,
+				856D90581E7BCFFD00D99929 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoffeeWalk;
+			productName = CoffeeWalk;
+			productReference = 856D905A1E7BCFFD00D99929 /* CoffeeWalk.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		856D90521E7BCFFD00D99929 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = JaninaKutyn;
+				TargetAttributes = {
+					856D90591E7BCFFD00D99929 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 856D90551E7BCFFD00D99929 /* Build configuration list for PBXProject "CoffeeWalk" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 856D90511E7BCFFD00D99929;
+			productRefGroup = 856D905B1E7BCFFD00D99929 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				856D90591E7BCFFD00D99929 /* CoffeeWalk */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		856D90581E7BCFFD00D99929 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				856D90681E7BCFFD00D99929 /* LaunchScreen.storyboard in Resources */,
+				856D90651E7BCFFD00D99929 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		856D90561E7BCFFD00D99929 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				856D90771E7BD09700D99929 /* Venue.swift in Sources */,
+				856D90741E7BD09700D99929 /* MapViewController.swift in Sources */,
+				856D90781E7BD09700D99929 /* Utils.swift in Sources */,
+				856D90761E7BD09700D99929 /* Theme.swift in Sources */,
+				856D905E1E7BCFFD00D99929 /* AppDelegate.swift in Sources */,
+				856D90751E7BD09700D99929 /* VenueRequestManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		856D90661E7BCFFD00D99929 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				856D90671E7BCFFD00D99929 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		856D906A1E7BCFFD00D99929 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		856D906B1E7BCFFD00D99929 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		856D906D1E7BCFFD00D99929 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CoffeeWalk/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.janinakutyn.CoffeeWalk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		856D906E1E7BCFFD00D99929 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CoffeeWalk/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.janinakutyn.CoffeeWalk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		856D90551E7BCFFD00D99929 /* Build configuration list for PBXProject "CoffeeWalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				856D906A1E7BCFFD00D99929 /* Debug */,
+				856D906B1E7BCFFD00D99929 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		856D906C1E7BCFFD00D99929 /* Build configuration list for PBXNativeTarget "CoffeeWalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				856D906D1E7BCFFD00D99929 /* Debug */,
+				856D906E1E7BCFFD00D99929 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 856D90521E7BCFFD00D99929 /* Project object */;
+}
