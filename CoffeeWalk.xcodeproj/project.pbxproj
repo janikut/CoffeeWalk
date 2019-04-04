@@ -11,11 +11,12 @@
 		856D90651E7BCFFD00D99929 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 856D90641E7BCFFD00D99929 /* Assets.xcassets */; };
 		856D90681E7BCFFD00D99929 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 856D90661E7BCFFD00D99929 /* LaunchScreen.storyboard */; };
 		856D90741E7BD09700D99929 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D906F1E7BD09700D99929 /* MapViewController.swift */; };
-		856D90751E7BD09700D99929 /* VenueRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D90701E7BD09700D99929 /* VenueRequestManager.swift */; };
+		856D90751E7BD09700D99929 /* VenueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D90701E7BD09700D99929 /* VenueManager.swift */; };
 		856D90761E7BD09700D99929 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D90711E7BD09700D99929 /* Theme.swift */; };
 		856D90771E7BD09700D99929 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D90721E7BD09700D99929 /* Venue.swift */; };
 		856D90781E7BD09700D99929 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D90731E7BD09700D99929 /* Utils.swift */; };
 		EF8DF9F12256146B0035D5C6 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF8DF9F02256146B0035D5C6 /* Colors.xcassets */; };
+		EF8DF9F322562A240035D5C6 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8DF9F222562A240035D5C6 /* LoadingIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,11 +26,12 @@
 		856D90671E7BCFFD00D99929 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		856D90691E7BCFFD00D99929 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		856D906F1E7BD09700D99929 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		856D90701E7BD09700D99929 /* VenueRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueRequestManager.swift; sourceTree = "<group>"; };
+		856D90701E7BD09700D99929 /* VenueManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueManager.swift; sourceTree = "<group>"; };
 		856D90711E7BD09700D99929 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		856D90721E7BD09700D99929 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		856D90731E7BD09700D99929 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		EF8DF9F02256146B0035D5C6 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		EF8DF9F222562A240035D5C6 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				856D906F1E7BD09700D99929 /* MapViewController.swift */,
-				856D90701E7BD09700D99929 /* VenueRequestManager.swift */,
+				856D90701E7BD09700D99929 /* VenueManager.swift */,
 				856D90711E7BD09700D99929 /* Theme.swift */,
 				856D90721E7BD09700D99929 /* Venue.swift */,
 				856D90731E7BD09700D99929 /* Utils.swift */,
@@ -72,6 +74,7 @@
 				EF8DF9F02256146B0035D5C6 /* Colors.xcassets */,
 				856D90661E7BCFFD00D99929 /* LaunchScreen.storyboard */,
 				856D90691E7BCFFD00D99929 /* Info.plist */,
+				EF8DF9F222562A240035D5C6 /* LoadingIndicator.swift */,
 			);
 			path = CoffeeWalk;
 			sourceTree = "<group>";
@@ -153,8 +156,9 @@
 				856D90741E7BD09700D99929 /* MapViewController.swift in Sources */,
 				856D90781E7BD09700D99929 /* Utils.swift in Sources */,
 				856D90761E7BD09700D99929 /* Theme.swift in Sources */,
+				EF8DF9F322562A240035D5C6 /* LoadingIndicator.swift in Sources */,
 				856D905E1E7BCFFD00D99929 /* AppDelegate.swift in Sources */,
-				856D90751E7BD09700D99929 /* VenueRequestManager.swift in Sources */,
+				856D90751E7BD09700D99929 /* VenueManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

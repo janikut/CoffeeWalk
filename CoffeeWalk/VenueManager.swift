@@ -1,5 +1,5 @@
 //
-//  VenueRequestManager.swift
+//  VenueManager.swift
 //  NearbyCoffee
 //
 //  Created by Janina Kutyn on 2017-03-10.
@@ -13,7 +13,7 @@ enum Result<Value> {
     case failure(Error)
 }
 
-class VenueRequestManager {
+class VenueManager {
     
     // MARK: - Public
     

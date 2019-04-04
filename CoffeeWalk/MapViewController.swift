@@ -57,7 +57,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // MARK: - Private
     
     private let mapView = MKMapView()
-    private let venueManager = VenueRequestManager()
+    private let venueManager = VenueManager()
     private var location: CLLocation? {
         didSet {
             resetMapRegion()
@@ -114,12 +114,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
 
         clearMap()
-        
-        // Could extend the implementation by having a more prominent loading indicator.
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+
+        let loadingIndicator = LoadingIndicator()
+        loadingIndicator.show(in: view)
         venueManager.getVenues(forLocation: location, inRadius: radius.rawValue) { [weak self] result in
             DispatchQueue.main.async {
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                loadingIndicator.hide()
                 
                 switch result {
                 case .success(let venues):
