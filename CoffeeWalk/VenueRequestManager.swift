@@ -11,7 +11,6 @@ import CoreLocation
 enum Result<Value> {
     case success(Value)
     case failure(Error)
-    case canceled()
 }
 
 class VenueRequestManager {
@@ -41,11 +40,7 @@ class VenueRequestManager {
             // We may have a situation where we receive both an error and valid data.
             // I chose to handle one or the other, as data accompanied by an error may be compromised.
             if let error = error as NSError? {
-                if error.code == NSURLErrorCancelled {
-                    completion(.canceled())
-                } else {
-                    completion(.failure(error))
-                }
+                completion(.failure(error))
             } else {
                 guard
                     let data = data,

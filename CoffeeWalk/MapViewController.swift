@@ -12,9 +12,9 @@ import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
     
     /// Radius options, expressed in meters.
-    enum Radius: Int {
-        case `default` = 500
+    enum Radius: Int, CaseIterable {
         case near = 200
+        case medium = 500
         case far = 1000
     }
     
@@ -22,12 +22,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        mapView.frame = view.bounds
-        mapView.delegate = self
-        mapView.showsUserLocation = true
-        view.addSubview(mapView)
-        
+
+        configureMapView()
         configureNavigationItem()
     }
 
@@ -44,10 +40,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         let annotationView = MKPinAnnotationView()
 
-        // We are using pin color to give the user visual indication of the distance.
         let pinColor: UIColor
         switch radius {
-        case .default:
+        case .medium:
             pinColor = Theme.accentColor1
         case .far:
             pinColor = Theme.accentColor2
@@ -69,7 +64,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             updateVenues()
         }
     }
-    private var radius: Radius = .default {
+    private var radius: Radius = .medium {
         didSet {
             resetMapRegion()
             
@@ -80,16 +75,23 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    private func configureMapView() {
+        mapView.frame = view.bounds
+        mapView.delegate = self
+        mapView.showsUserLocation = true
+        view.addSubview(mapView)
+    }
+    
     private func configureNavigationItem() {
         let logo = UIImage(named: "Logo")?.withRenderingMode(.alwaysTemplate)
         let imageView = UIImageView(image: logo)
         navigationItem.titleView = imageView
         
         let recenterIcon = UIImage(named: "RecenterIcon")?.withRenderingMode(.alwaysTemplate)
-        let leftBarButtonItem = UIBarButtonItem.init(image: recenterIcon, style: .plain, target: self, action: #selector(resetMapRegion))
+        let leftBarButtonItem = UIBarButtonItem(image: recenterIcon, style: .plain, target: self, action: #selector(resetMapRegion))
         navigationItem.leftBarButtonItem = leftBarButtonItem
         
-        let rightBarButtonItem = UIBarButtonItem.init(title: nil, style: .plain, target: self, action: #selector(showRadiusPicker))
+        let rightBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: self, action: #selector(showRadiusPicker))
         navigationItem.rightBarButtonItem = rightBarButtonItem
         updateRightBarButtonTitle()
     }
@@ -101,7 +103,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         // The map resets to display the user in the center with the region fitting the currently selected radius.
         let diameter = CLLocationDistance(radius.rawValue) * 2
-        var region = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: diameter, longitudinalMeters: diameter)
+        var region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: diameter, longitudinalMeters: diameter)
         region = mapView.regionThatFits(region)
         mapView.setRegion(region, animated: true)
     }
@@ -110,8 +112,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         guard let location = location else {
             return
         }
-        
-        // Force removal of all annotations before requesting new ones.
+
         clearMap()
         
         // Could extend the implementation by having a more prominent loading indicator.
@@ -125,8 +126,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     self?.plot(venues: venues)
                 case .failure(_):
                     self?.showErrorMessage()
-                case .canceled():
-                    break
                 }
             }
         }
@@ -134,7 +133,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     private func updateRightBarButtonTitle() {
         // Right bar button item displays the currently selected radius, expressed in minutes.
-        navigationItem.rightBarButtonItem?.title = shortDescription(forRadius: radius)
+        navigationItem.rightBarButtonItem?.title = description(forRadius: radius, short: true)
     }
     
     private func clearMap() {
@@ -159,8 +158,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.addAnnotations(annotations)
     }
 
-    /// Generic message for network errors.
     private func showErrorMessage() {
+        /// Generic message for network errors.
         let alertController = UIAlertController(title: "Oops", message: "Something went wrong.", preferredStyle: .alert)
         let dismissAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(dismissAction)
@@ -168,42 +167,23 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @objc private func showRadiusPicker() {
-        // For this assignment I chose to go with preset distances.
-        // Perhaps the user would find it more useful to use a slider.
-        
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let dismissAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(dismissAction)
         
-        let smallerRadiusAction = UIAlertAction(title: longDescriptionForDistance(forRadius: .near), style: .default) { [weak self] _ in
-            self?.radius = .near
+        Radius.allCases.forEach { radius in
+            let action = UIAlertAction(title: description(forRadius: radius, short: false), style: .default) { [weak self] _ in
+                self?.radius = radius
+            }
+            alertController.addAction(action)
         }
-        alertController.addAction(smallerRadiusAction)
-        
-        let defaultRadiusAction = UIAlertAction(title: longDescriptionForDistance(forRadius: .default), style: .default) { [weak self] _ in
-            self?.radius = .default
-        }
-        alertController.addAction(defaultRadiusAction)
-        
-        let largerRadiusAction = UIAlertAction(title: longDescriptionForDistance(forRadius: .far), style: .default) { [weak self] _ in
-            self?.radius = .far
-        }
-        alertController.addAction(largerRadiusAction)
-        
+
         present(alertController, animated: true, completion: nil)
     }
     
-    /// For use by the right bar button item.
-    private func shortDescription(forRadius aRadius: Radius) -> String {
-        let minutes = Utils.minutesToWalk(meters: aRadius.rawValue)
-        return "\(minutes) min"
-    }
-    
-    /// For use by the radius picker.
-    private func longDescriptionForDistance(forRadius aRadius: Radius) -> String {
-        let minutes = Utils.minutesToWalk(meters: aRadius.rawValue)
-        return "\(minutes) minute walk"
+    private func description(forRadius radius: Radius, short: Bool) -> String {
+        let minutes = Utils.minutesToWalk(meters: radius.rawValue)
+        return short ? "\(minutes) min" : "\(minutes) minute walk"
     }
 
 }
-
