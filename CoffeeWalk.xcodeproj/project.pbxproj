@@ -15,6 +15,7 @@
 		856D90761E7BD09700D99929 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D90711E7BD09700D99929 /* Theme.swift */; };
 		856D90771E7BD09700D99929 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D90721E7BD09700D99929 /* Venue.swift */; };
 		856D90781E7BD09700D99929 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D90731E7BD09700D99929 /* Utils.swift */; };
+		EF8DF9F12256146B0035D5C6 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF8DF9F02256146B0035D5C6 /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		856D90711E7BD09700D99929 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		856D90721E7BD09700D99929 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		856D90731E7BD09700D99929 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		EF8DF9F02256146B0035D5C6 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				856D90731E7BD09700D99929 /* Utils.swift */,
 				856D905D1E7BCFFD00D99929 /* AppDelegate.swift */,
 				856D90641E7BCFFD00D99929 /* Assets.xcassets */,
+				EF8DF9F02256146B0035D5C6 /* Colors.xcassets */,
 				856D90661E7BCFFD00D99929 /* LaunchScreen.storyboard */,
 				856D90691E7BCFFD00D99929 /* Info.plist */,
 			);
@@ -133,6 +136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF8DF9F12256146B0035D5C6 /* Colors.xcassets in Resources */,
 				856D90681E7BCFFD00D99929 /* LaunchScreen.storyboard in Resources */,
 				856D90651E7BCFFD00D99929 /* Assets.xcassets in Resources */,
 			);
@@ -216,7 +220,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -268,7 +272,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
