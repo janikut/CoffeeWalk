@@ -80,6 +80,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         mapView.showsUserLocation = true
         view.addSubview(mapView)
+        
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                                     mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                                     mapView.topAnchor.constraint(equalTo: view.topAnchor),
+                                     mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+                                     ])
     }
     
     private func configureNavigationItem() {
