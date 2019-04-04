@@ -40,7 +40,7 @@ class VenueRequestManager {
         task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             // We may have a situation where we receive both an error and valid data.
             // I chose to handle one or the other, as data accompanied by an error may be compromised.
-            if let error = error as? NSError {
+            if let error = error as NSError? {
                 if error.code == NSURLErrorCancelled {
                     completion(.canceled())
                 } else {

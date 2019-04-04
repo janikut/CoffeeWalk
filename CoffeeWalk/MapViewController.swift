@@ -101,7 +101,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         // The map resets to display the user in the center with the region fitting the currently selected radius.
         let diameter = CLLocationDistance(radius.rawValue) * 2
-        var region = MKCoordinateRegionMakeWithDistance(location.coordinate, diameter, diameter)
+        var region = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: diameter, longitudinalMeters: diameter)
         region = mapView.regionThatFits(region)
         mapView.setRegion(region, animated: true)
     }
