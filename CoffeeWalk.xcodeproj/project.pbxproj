@@ -74,24 +74,32 @@
 		856D905C1E7BCFFD00D99929 /* CoffeeWalk */ = {
 			isa = PBXGroup;
 			children = (
-				EF8DF9F82258AD990035D5C6 /* AlertHandler.swift */,
+				EF8DFA002258CD110035D5C6 /* Utils */,
 				856D905D1E7BCFFD00D99929 /* AppDelegate.swift */,
 				856D90641E7BCFFD00D99929 /* Assets.xcassets */,
 				EF8DF9F02256146B0035D5C6 /* Colors.xcassets */,
 				856D90691E7BCFFD00D99929 /* Info.plist */,
 				856D90661E7BCFFD00D99929 /* LaunchScreen.storyboard */,
-				EF8DF9F222562A240035D5C6 /* LoadingIndicator.swift */,
 				856D906F1E7BD09700D99929 /* MapViewController.swift */,
-				EF8DF9FE2258C9980035D5C6 /* NetworkingUtils.swift */,
 				EF8DF9FA2258C5120035D5C6 /* Result.swift */,
-				856D90711E7BD09700D99929 /* Theme.swift */,
-				856D90731E7BD09700D99929 /* Utils.swift */,
 				856D90721E7BD09700D99929 /* Venue.swift */,
 				EF8DF9F4225670C60035D5C6 /* VenueAnnotationView.swift */,
 				856D90701E7BD09700D99929 /* VenueManager.swift */,
 				EF8DF9F622567CF60035D5C6 /* VenueViewController.swift */,
 			);
 			path = CoffeeWalk;
+			sourceTree = "<group>";
+		};
+		EF8DFA002258CD110035D5C6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				EF8DF9F82258AD990035D5C6 /* AlertHandler.swift */,
+				EF8DF9F222562A240035D5C6 /* LoadingIndicator.swift */,
+				EF8DF9FE2258C9980035D5C6 /* NetworkingUtils.swift */,
+				856D90711E7BD09700D99929 /* Theme.swift */,
+				856D90731E7BD09700D99929 /* Utils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
