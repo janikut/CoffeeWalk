@@ -79,7 +79,7 @@ final class VenueViewController: UITableViewController {
         
         switch venueDetail {
         case .website:
-            openVenuWebsite()
+            openVenueWebsite()
         case .phoneNumber:
             callVenue()
         default:
@@ -138,7 +138,7 @@ final class VenueViewController: UITableViewController {
         UIApplication.shared.open(phoneURL)
     }
     
-    private func openVenuWebsite() {
+    private func openVenueWebsite() {
         guard let website = venue.websiteURL,
             let webURL = URL(string: website) else {
                 return

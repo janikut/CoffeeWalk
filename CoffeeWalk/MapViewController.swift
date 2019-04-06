@@ -74,12 +74,20 @@ final class MapViewController: UIViewController, MKMapViewDelegate {
     
     private let mapView = MKMapView()
     private let venueManager = VenueManager()
+    
     private var location: CLLocation? {
         didSet {
             resetMapRegion()
             updateVenues()
         }
     }
+    
+    private var venues: [Venue] = [] {
+        didSet {
+            plotVenues()
+        }
+    }
+    
     private var radius: Radius = .medium {
         didSet {
             resetMapRegion()
@@ -136,8 +144,6 @@ final class MapViewController: UIViewController, MKMapViewDelegate {
             return
         }
 
-        mapView.removeAnnotations(mapView.annotations)
-
         let loadingIndicator = LoadingIndicator()
         loadingIndicator.show()
         venueManager.getVenues(forLocation: location, inRadius: radius.rawValue) { [weak self] result in
@@ -149,7 +155,7 @@ final class MapViewController: UIViewController, MKMapViewDelegate {
                 
                 switch result {
                 case .success(let venues):
-                    strongSelf.plot(venues: venues)
+                    strongSelf.venues = venues
                 case .failure(_):
                     AlertHandler.showNetworkErrorAlert(from: strongSelf)
                 case .canceled:
@@ -164,7 +170,9 @@ final class MapViewController: UIViewController, MKMapViewDelegate {
         navigationItem.rightBarButtonItem?.title = description(forRadius: radius, short: true)
     }
     
-    private func plot(venues: [Venue]) {
+    private func plotVenues() {
+        mapView.removeAnnotations(mapView.annotations)
+        
         var annotations: [MKAnnotation] = []
         
         for venue in venues {
