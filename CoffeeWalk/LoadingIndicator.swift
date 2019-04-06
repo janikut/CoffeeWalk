@@ -10,7 +10,7 @@ import UIKit
 
 /// Displays a loading indicator in the center of keyWindow.
 /// While indicator is shown, user interaction on keyWindow is disabled.
-class LoadingIndicator {
+final class LoadingIndicator {
 
     // MARK: - Public
     

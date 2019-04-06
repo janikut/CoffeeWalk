@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+final class MapViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: - UIViewController
 
@@ -152,6 +152,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     strongSelf.plot(venues: venues)
                 case .failure(_):
                     AlertHandler.showNetworkErrorAlert(from: strongSelf)
+                case .canceled:
+                    break
                 }
             }
         }

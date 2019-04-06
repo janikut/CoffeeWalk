@@ -9,7 +9,7 @@
 import UIKit
 import SafariServices
 
-class VenueViewController: UITableViewController {
+final class VenueViewController: UITableViewController {
     
     // MARK: - Object Lifecycle
     
@@ -122,6 +122,8 @@ class VenueViewController: UITableViewController {
                     strongSelf.venue = venue
                 case .failure(_):
                     AlertHandler.showNetworkErrorAlert(from: strongSelf)
+                case .canceled:
+                    break
                 }
             }
         }
