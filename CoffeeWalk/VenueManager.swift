@@ -30,7 +30,6 @@ class VenueManager {
         task?.cancel()
         
         guard let url = url(forLatitude: location.coordinate.latitude, longitude: location.coordinate.longitude, radius: radius) else {
-            print("\(#file), \(#function): Invalid URL.")
             let unsupportedUrlError = NSError(domain: "", code: NSURLErrorUnsupportedURL, userInfo: nil)
             completion(.failure(unsupportedUrlError))
             return
@@ -66,11 +65,48 @@ class VenueManager {
         task?.resume()
     }
     
+    func getVenueDetails(for venue: Venue, completion: @escaping (Result<Venue>) -> Void) {
+        task?.cancel()
+        
+        guard let url = url(forVenue: venue) else{
+            let unsupportedUrlError = NSError(domain: "", code: NSURLErrorUnsupportedURL, userInfo: nil)
+            completion(.failure(unsupportedUrlError))
+            return
+        }
+        
+        task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            if let error = error as NSError? {
+                completion(.failure(error))
+            } else {
+                guard
+                    let data = data,
+                    let json = self?.json(fromData: data),
+                    let venueDetails = self?.venueDetailsJsonDescriptions(fromJson: json) else {
+                        let parsingError = NSError(domain: "", code: NSURLErrorCannotParseResponse, userInfo: nil)
+                        completion(.failure(parsingError))
+                        return
+                }
+                
+                var updatedVenue = venue
+                updatedVenue.websiteURL = venueDetails["url"] as? String
+                if let contactDescription = venueDetails["contact"] as? [String: Any] {
+                    updatedVenue.phoneNumber = contactDescription["formattedPhone"] as? String
+                    updatedVenue.dialablePhoneNumber = contactDescription["phone"] as? String 
+                }
+                
+                completion(.success(updatedVenue))
+            }
+        }
+        
+        task?.resume()
+    }
+    
     // MARK: - Private
     
     private var task: URLSessionDataTask?
     
-    private let baseURLString = "https://api.foursquare.com/v2/venues/explore"
+    private let baseURLString = "https://api.foursquare.com/v2/venues"
+    
     // clientID and clientSecret were generated in FourSquare's developer portal.
     private let clientID = "ATF2CH5CJIV4JX4QAONLPJP4FDQN5HWQSG3B2M0NZDIQLUPA"
     private let clientSecret = "DVBSFSMCJ2K4JZMSSHNVILQBKXUOLQSNF0CBOLS4RDF4VRVI"
@@ -80,10 +116,13 @@ class VenueManager {
         return dateFormatter.string(from: Date())
     }
     
+    private func url(forVenue venue: Venue) -> URL? {
+        let urlString = "\(baseURLString)/\(venue.venueID)?client_id=\(clientID)&client_secret=\(clientSecret)&v=\(dateString)"
+        return URL(string: urlString)
+    }
+    
     private func url(forLatitude latitude: Double, longitude: Double, radius: Int) -> URL? {
-        // Since I'm only making this one web call, this was the simplest way to construct the url string.
-        // If we had to make many different calls, a utility method to create parameters from dictionary would be more useful.
-        let urlString = "\(baseURLString)?ll=\(latitude),\(longitude)&radius=\(radius)&section=coffee&client_id=\(clientID)&client_secret=\(clientSecret)&v=\(dateString)"
+        let urlString = "\(baseURLString)/explore?ll=\(latitude),\(longitude)&radius=\(radius)&section=coffee&client_id=\(clientID)&client_secret=\(clientSecret)&v=\(dateString)"
         return URL(string: urlString)
     }
 
@@ -101,13 +140,20 @@ class VenueManager {
         guard
             let response = json["response"] as? [String: Any],
             let groups = response["groups"] as? [Any],
-            groups.count > 0, // Group 0 is Recommended venues
-            let group = groups[0] as? [String: Any],
-            let items = group["items"] as? [[String: Any]] else {
+            // The first group is Recommended venues
+            let group = groups.first as? [String: Any] else {
                 return nil
         }
         
-        return items
+        return group["items"] as? [[String: Any]]
+    }
+    
+    private func venueDetailsJsonDescriptions(fromJson json: [String: Any]) -> [String: Any]? {
+        guard
+            let response = json["response"] as? [String: Any] else {
+                return nil
+        }
+        return response["venue"] as? [String: Any]
     }
     
     private func venue(fromJson itemJson: [String: Any]) -> Venue? {
@@ -129,10 +175,9 @@ class VenueManager {
         }
         
         let location = CLLocation(latitude: latitude, longitude: longitude)
-        let website = venueJson["url"] as? String
         let address  = locationDescription["address"] as? String
         
-        let venue = Venue(venueID: venueID, name: name, location: location, website: website, address: address)
+        let venue = Venue(venueID: venueID, name: name, location: location, websiteURL: nil, address: address, phoneNumber: nil, dialablePhoneNumber: nil)
         return venue
     }
     

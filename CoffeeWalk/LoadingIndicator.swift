@@ -8,23 +8,29 @@
 
 import UIKit
 
+/// Displays a loading indicator in the center of keyWindow.
+/// While indicator is shown, user interaction on keyWindow is disabled.
 class LoadingIndicator {
 
     // MARK: - Public
     
-    func show(in view: UIView) {
+    func show() {
+        guard let window = UIApplication.shared.keyWindow else {
+            return
+        }
+    
         toastView.addSubview(spinner)
-        view.addSubview(toastView)
+        window.addSubview(toastView)
         
         toastView.translatesAutoresizingMaskIntoConstraints = false
         spinner.translatesAutoresizingMaskIntoConstraints = false
         
         // Let's make the toast 1/3 of the shortest side
-        let shortestSideLength = min(view.bounds.height, view.bounds.width)
+        let shortestSideLength = min(window.bounds.height, window.bounds.width)
         let toastSideLength = shortestSideLength / 3
         
-        NSLayoutConstraint.activate([toastView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                                     toastView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        NSLayoutConstraint.activate([toastView.centerXAnchor.constraint(equalTo: window.centerXAnchor),
+                                     toastView.centerYAnchor.constraint(equalTo: window.centerYAnchor),
                                      toastView.widthAnchor.constraint(equalToConstant: toastSideLength),
                                      toastView.heightAnchor.constraint(equalToConstant: toastSideLength),
                                      
@@ -33,7 +39,7 @@ class LoadingIndicator {
                                      ])
         
         toastView.superview?.isUserInteractionEnabled = false
-        view.isUserInteractionEnabled = false
+        window.isUserInteractionEnabled = false
     }
     
     func hide() {

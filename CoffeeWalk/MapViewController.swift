@@ -11,13 +11,6 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
-    /// Radius options, expressed in meters.
-    enum Radius: Int, CaseIterable {
-        case near = 200
-        case medium = 500
-        case far = 1000
-    }
-    
     // MARK: - UIViewController
 
     override func viewDidLoad() {
@@ -38,7 +31,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             return nil
         }
         
-        let annotationView = MKPinAnnotationView()
+        let annotationIdentifier = "AnnotationIdentifier"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) as? MKPinAnnotationView
+        
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView()
+        }
 
         let pinColor: UIColor
         switch radius {
@@ -49,12 +47,30 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         case .near:
             pinColor = Theme.accentColor3
         }
-        annotationView.pinTintColor = pinColor
-        annotationView.canShowCallout = true
+        annotationView?.pinTintColor = pinColor
+        annotationView?.canShowCallout = true
+        annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         return annotationView
     }
     
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        guard let annotation = view.annotation as? VenueAnnotation,
+            let venue = annotation.venue else {
+                return
+        }
+        
+        let viewController = VenueViewController(venue: venue)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
     // MARK: - Private
+    
+    // Radius options, expressed in meters.
+    private enum Radius: Int, CaseIterable {
+        case near = 200
+        case medium = 500
+        case far = 1000
+    }
     
     private let mapView = MKMapView()
     private let venueManager = VenueManager()
@@ -120,19 +136,22 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             return
         }
 
-        clearMap()
+        mapView.removeAnnotations(mapView.annotations)
 
         let loadingIndicator = LoadingIndicator()
-        loadingIndicator.show(in: view)
+        loadingIndicator.show()
         venueManager.getVenues(forLocation: location, inRadius: radius.rawValue) { [weak self] result in
             DispatchQueue.main.async {
                 loadingIndicator.hide()
+                guard let strongSelf = self else {
+                    return
+                }
                 
                 switch result {
                 case .success(let venues):
-                    self?.plot(venues: venues)
+                    strongSelf.plot(venues: venues)
                 case .failure(_):
-                    self?.showErrorMessage()
+                    AlertHandler.showNetworkErrorAlert(from: strongSelf)
                 }
             }
         }
@@ -143,34 +162,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         navigationItem.rightBarButtonItem?.title = description(forRadius: radius, short: true)
     }
     
-    private func clearMap() {
-        mapView.removeAnnotations(mapView.annotations)
-    }
-    
     private func plot(venues: [Venue]) {
         var annotations: [MKAnnotation] = []
         
-        // Just using out of the box MKPointAnnotation,
-        // but the implementation could be extended to show more sophisticated callouts.
-        // It would be nice to also show website or other contact details.
         for venue in venues {
-            let annotation = MKPointAnnotation()
+            let annotation = VenueAnnotation()
             annotation.coordinate = venue.location.coordinate
             annotation.title = venue.name
             annotation.subtitle = venue.address
+            annotation.venue = venue
             
             annotations.append(annotation)
         }
         
         mapView.addAnnotations(annotations)
-    }
-
-    private func showErrorMessage() {
-        /// Generic message for network errors.
-        let alertController = UIAlertController(title: "Oops", message: "Something went wrong.", preferredStyle: .alert)
-        let dismissAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(dismissAction)
-        present(alertController, animated: true, completion: nil)
     }
     
     @objc private func showRadiusPicker() {

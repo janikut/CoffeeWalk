@@ -14,7 +14,8 @@ struct Venue {
     var venueID: String
     var name: String
     var location: CLLocation
-    var website: String?
+    var websiteURL: String?
     var address: String?
-    
+    var phoneNumber: String?
+    var dialablePhoneNumber: String?
 }

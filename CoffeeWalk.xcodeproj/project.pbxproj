@@ -17,6 +17,9 @@
 		856D90781E7BD09700D99929 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D90731E7BD09700D99929 /* Utils.swift */; };
 		EF8DF9F12256146B0035D5C6 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF8DF9F02256146B0035D5C6 /* Colors.xcassets */; };
 		EF8DF9F322562A240035D5C6 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8DF9F222562A240035D5C6 /* LoadingIndicator.swift */; };
+		EF8DF9F5225670C60035D5C6 /* VenueAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8DF9F4225670C60035D5C6 /* VenueAnnotationView.swift */; };
+		EF8DF9F722567CF60035D5C6 /* VenueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8DF9F622567CF60035D5C6 /* VenueViewController.swift */; };
+		EF8DF9F92258AD990035D5C6 /* AlertHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8DF9F82258AD990035D5C6 /* AlertHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		856D90731E7BD09700D99929 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		EF8DF9F02256146B0035D5C6 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		EF8DF9F222562A240035D5C6 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		EF8DF9F4225670C60035D5C6 /* VenueAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueAnnotationView.swift; sourceTree = "<group>"; };
+		EF8DF9F622567CF60035D5C6 /* VenueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueViewController.swift; sourceTree = "<group>"; };
+		EF8DF9F82258AD990035D5C6 /* AlertHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,17 +70,20 @@
 		856D905C1E7BCFFD00D99929 /* CoffeeWalk */ = {
 			isa = PBXGroup;
 			children = (
-				856D906F1E7BD09700D99929 /* MapViewController.swift */,
-				856D90701E7BD09700D99929 /* VenueManager.swift */,
-				856D90711E7BD09700D99929 /* Theme.swift */,
-				856D90721E7BD09700D99929 /* Venue.swift */,
-				856D90731E7BD09700D99929 /* Utils.swift */,
 				856D905D1E7BCFFD00D99929 /* AppDelegate.swift */,
 				856D90641E7BCFFD00D99929 /* Assets.xcassets */,
 				EF8DF9F02256146B0035D5C6 /* Colors.xcassets */,
-				856D90661E7BCFFD00D99929 /* LaunchScreen.storyboard */,
 				856D90691E7BCFFD00D99929 /* Info.plist */,
+				856D90661E7BCFFD00D99929 /* LaunchScreen.storyboard */,
 				EF8DF9F222562A240035D5C6 /* LoadingIndicator.swift */,
+				856D906F1E7BD09700D99929 /* MapViewController.swift */,
+				856D90711E7BD09700D99929 /* Theme.swift */,
+				856D90731E7BD09700D99929 /* Utils.swift */,
+				856D90721E7BD09700D99929 /* Venue.swift */,
+				EF8DF9F4225670C60035D5C6 /* VenueAnnotationView.swift */,
+				856D90701E7BD09700D99929 /* VenueManager.swift */,
+				EF8DF9F622567CF60035D5C6 /* VenueViewController.swift */,
+				EF8DF9F82258AD990035D5C6 /* AlertHandler.swift */,
 			);
 			path = CoffeeWalk;
 			sourceTree = "<group>";
@@ -157,6 +166,9 @@
 				856D90781E7BD09700D99929 /* Utils.swift in Sources */,
 				856D90761E7BD09700D99929 /* Theme.swift in Sources */,
 				EF8DF9F322562A240035D5C6 /* LoadingIndicator.swift in Sources */,
+				EF8DF9F5225670C60035D5C6 /* VenueAnnotationView.swift in Sources */,
+				EF8DF9F722567CF60035D5C6 /* VenueViewController.swift in Sources */,
+				EF8DF9F92258AD990035D5C6 /* AlertHandler.swift in Sources */,
 				856D905E1E7BCFFD00D99929 /* AppDelegate.swift in Sources */,
 				856D90751E7BD09700D99929 /* VenueManager.swift in Sources */,
 			);
